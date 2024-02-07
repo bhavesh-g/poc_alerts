@@ -14,7 +14,7 @@ def index():
 @app.route('/create_alert', methods=['GET'])
 def create_alert():
     alert_message = f"Dummy Alert: {random.randint(1, 100)}"
-    socketio.emit('receive_alert', {'message': alert_message}, broadcast=True)
+    socketio.emit('receive_alert', {'message': alert_message})
     return f'<html><body><h1>{alert_message}</h1><a href="/">Back to Home</a></body></html>'
 
 @socketio.on('connect')
