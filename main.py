@@ -21,7 +21,7 @@ def send_alert_conditionally():
 
 
 if __name__ == '__main__':
-    
+    print('mainnn')
     socketio.run(app, debug=True, port=5000)
     print('stuff')
     while True:
