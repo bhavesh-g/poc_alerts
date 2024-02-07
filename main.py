@@ -14,7 +14,10 @@ def index():
 @app.route('/create_alert', methods=['GET'])
 def create_alert():
     alert_message = f"Dummy Alert: {random.randint(1, 100)}"
-    socketio.emit('receive_alert', {'message': alert_message})
+    try:
+        socketio.emit('receive_alert', {'message': alert_message})
+    except Excwption as e:
+        print(e)
     return f'<html><body><h1>{alert_message}</h1><a href="/">Back to Home</a></body></html>'
 
 @socketio.on('connect')
@@ -22,4 +25,8 @@ def handle_connect():
     print('Frontend connected through socket.')
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=5000)
+
+    try:
+        socketio.run(app, debug=True, port=5000)
+    except Exception as e:
+        print(e,'2')
