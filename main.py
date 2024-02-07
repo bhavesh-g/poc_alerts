@@ -16,7 +16,6 @@ def index():
 
 def send_alert_conditionally():
     current_time_seconds = int(time.time())
-    print(current_time_seconds)
     if current_time_seconds % 3 == 0:
         alert_message = f"Random Alert: {random.randint(1, 100)}"
         socketio.emit('receive_alert', {'message': alert_message}, broadcast=True)
