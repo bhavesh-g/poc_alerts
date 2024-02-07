@@ -27,4 +27,4 @@ def schedule_alert_sender():
 if __name__ == '__main__':
     t = threading.Thread(target=schedule_alert_sender)
     t.start()
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True, port=5000)
